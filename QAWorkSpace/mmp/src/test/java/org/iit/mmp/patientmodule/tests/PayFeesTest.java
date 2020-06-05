@@ -33,7 +33,7 @@ public class PayFeesTest extends TestBase {
         Thread.sleep(3000);
         helperObj.navigateToPatientServices("Create Visit");
         objSAAP=new ScheduleAppointmentAdminPage(driver);
-        objSAAP.scheduleAppointment("Beth");
+        objSAAP.scheduleAppointment("Becky");
 		
 		//create fee
 		helperObj.searchPatient("Ria");
