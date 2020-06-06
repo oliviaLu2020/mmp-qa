@@ -29,15 +29,16 @@ public class HelperClass {
 	 
 	public void launchApplicationURL(String url)
 	{
-		driver.get(url);
-		 
+		driver.get(url); 
 	}
+	
 	public WebDriver switchToAFrameAvailable(String frameId,int timeinSecs)
 	{
 		WebDriverWait wait = new WebDriverWait(driver,timeinSecs);
 		driver = wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameId));
 		return driver;
 	}
+	
 	public void login(String userName,String pwd) 
 	{
 		  driver.findElement(By.xpath("//input[@id='username']")).sendKeys(userName);
@@ -45,6 +46,7 @@ public class HelperClass {
 		  driver.findElement(By.xpath("//input[@type='submit']")).click();
 
     }
+	
 	public void captureScreenshot(String tc_Name) throws IOException
 	{
 		
@@ -62,9 +64,6 @@ public class HelperClass {
 	{
 		driver.findElement(By.xpath("//h4[contains(text(),'"+drName+"')]/ancestor::td/button")).click();
 	}
-	
-	
-	
 	
 	//write symptoms
 		public void inputSymptoms(String symptom)

@@ -36,9 +36,7 @@ public class CreateFeesAdminPage{
 	public String readSuccessMessage()
 	{
 		Alert aler=driver.switchTo().alert();
-       
 		String text=aler.getText();
-		
 		aler.accept();
 		return text;
 	}

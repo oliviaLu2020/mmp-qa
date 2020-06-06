@@ -27,10 +27,8 @@ public class PayFeesPage {
 		this.driver=driver;
 	}
 	
-	
 	public void naviageToPay()
 	{
-		
 		driver.findElement(pay).click();
 	}
 		
@@ -67,7 +65,6 @@ public class PayFeesPage {
 	{
 		driver.findElement(sumitB).click();
 	}
-	
 	
 	public void payFee()
 	{

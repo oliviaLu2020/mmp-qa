@@ -42,7 +42,6 @@ public class PayFeesTest extends TestBase {
         objCFAP= new CreateFeesAdminPage(driver);
         objCFAP.createFees("05/11/2020", "Xray");
         objCFAP.readSuccessMessage();
-        
 		
 		//Login to patient portal and pay fee
         helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Integrated-Build.6.8.000/portal/login.php");
@@ -50,8 +49,7 @@ public class PayFeesTest extends TestBase {
         helperObj.moduleNavigation("Fees");
         Thread.sleep(3000);
         objPFPP=new PayFeesPage(driver);
-        objPFPP.payFee();
-		
+        objPFPP.payFee();	
 	}
 }
 	
