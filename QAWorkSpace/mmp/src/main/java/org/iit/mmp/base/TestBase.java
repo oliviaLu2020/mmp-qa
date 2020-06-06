@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import io.github.bonigarcia.wdm.WebDriverManager;
 public class TestBase {
 	protected WebDriver driver;
+	
 	@BeforeClass
 	public void instantiateDriver() throws IOException
 	{

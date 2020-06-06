@@ -22,7 +22,6 @@ public class ProjectConfiguration {
 		  pro.load(fis);
 
 		  return pro;
-
 	}
 
 }

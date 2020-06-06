@@ -32,7 +32,6 @@ public class PayFeesPage {
 		driver.findElement(pay).click();
 	}
 		
-	
 	public void selectPayment(String amount)
 	{
 		Select payment=new Select(driver.findElement(By.id("amount")));

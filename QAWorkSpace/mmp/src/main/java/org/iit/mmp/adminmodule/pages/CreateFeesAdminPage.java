@@ -13,7 +13,6 @@ public class CreateFeesAdminPage{
 	By submitB=By.xpath("//input[@value='submit']");
 	
 	
-	
 	public CreateFeesAdminPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -40,6 +39,5 @@ public class CreateFeesAdminPage{
 		aler.accept();
 		return text;
 	}
-
 
 }

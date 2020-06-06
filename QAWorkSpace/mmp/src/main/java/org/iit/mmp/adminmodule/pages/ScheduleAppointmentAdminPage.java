@@ -33,9 +33,7 @@ import org.openqa.selenium.support.ui.Select;
 			this.driver=driver;
 			helperObj=new HelperClass(driver);
 		}
-
-		
-		     
+ 
 			//create visit-search doctor	
 			public void navigateCreateVisit()
 			{

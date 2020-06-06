@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HelperClass {
 	WebDriver driver ;
+	
 	public HelperClass(WebDriver driver)
 	{
 		this.driver = driver;
@@ -72,7 +73,6 @@ public class HelperClass {
 			driver.findElement(By.xpath("//textarea[@name='sym']")).sendKeys(symptom);
 			driver.findElement(By.xpath("//form[@name='symptoms']/descendant::div/input[@value='Submit']")).click();
 		}
-		
 		
 		public void searchPatient(String pName) throws InterruptedException
 		{

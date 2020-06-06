@@ -18,7 +18,6 @@ public class PayFeesTest extends TestBase {
 	CreateFeesAdminPage objCFAP;
 	ScheduleAppointmentAdminPage objSAAP;
 	
-	
 	@Test(description="US_006 Pay Fees Page", groups= {"US-006","regression","sanity","patientmodule"})
 	public void validatePayFeesTests() throws InterruptedException
 	{
