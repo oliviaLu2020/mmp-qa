@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class PayFeesTest extends TestBase {
 	
-	Utility util;
+	
 	HelperClass helperObj;
 	PayFeesPage objPFPP;
 	CreateFeesAdminPage objCFAP;
