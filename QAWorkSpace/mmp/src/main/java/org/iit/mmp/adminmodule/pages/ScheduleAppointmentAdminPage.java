@@ -34,11 +34,11 @@ import org.openqa.selenium.support.ui.Select;
 			helperObj=new HelperClass(driver);
 		}
  
-			//create visit-search doctor	
+			/*//create visit-search doctor	
 			public void navigateCreateVisit()
 			{
 				driver.findElement(createVisit).click();
-			}
+			}*/
 			
 			//create visit schedule appointment
 			public void scheduleAppointment(String doctorName) throws InterruptedException

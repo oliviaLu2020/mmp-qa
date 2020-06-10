@@ -18,10 +18,10 @@ public class CreateFeesAdminPage{
 		this.driver=driver;
 	}
 	
-	public void navigateCreateFees()
+	/*public void navigateCreateFees()
 	{
 		driver.findElement(createFees).click();
-	}
+	}*/
 	
 	public void createFees(String date, String serviceName)
 	{ 
