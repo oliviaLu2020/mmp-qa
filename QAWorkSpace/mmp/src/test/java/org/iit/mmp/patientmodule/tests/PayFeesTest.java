@@ -1,5 +1,7 @@
 package org.iit.mmp.patientmodule.tests;
 
+import java.io.IOException;
+
 import org.iit.mmp.adminmodule.pages.CreateFeesAdminPage;
 import org.iit.mmp.adminmodule.pages.ScheduleAppointmentAdminPage;
 import org.iit.mmp.base.TestBase;
@@ -19,12 +21,12 @@ public class PayFeesTest extends TestBase {
 	ScheduleAppointmentAdminPage objSAAP;
 	
 	@Test(description="US_006 Pay Fees Page", groups= {"US-006","regression","sanity","patientmodule"})
-	public void validatePayFeesTests() throws InterruptedException
+	public void validatePayFeesTests() throws InterruptedException, IOException
 	{
 		//login to admin portal
 		helperObj=new HelperClass(driver);
-        helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Admin-Build.2.1.000/index.php");
-        helperObj.login("Thomas_444","Edison_444");
+        helperObj.launchApplicationAdminURL();
+        helperObj.adminLogin();
         helperObj.moduleNavigation("Patient");
         helperObj.searchPatient("Ria");
         
@@ -39,16 +41,17 @@ public class PayFeesTest extends TestBase {
         Thread.sleep(3000);
         helperObj.navigateToPatientServices("Create Fee");
         objCFAP= new CreateFeesAdminPage(driver);
-        objCFAP.createFees("05/11/2020", "Xray");
+        objCFAP.createFees("06/08/2020","Xray");
         objCFAP.readSuccessMessage();
 		
 		//Login to patient portal and pay fee
-        helperObj.launchApplicationURL("http://96.84.175.78/MMP-Release2-Integrated-Build.6.8.000/portal/login.php");
-        helperObj.login("ria1","Ria12345");
+        helperObj.launchApplicationPatientURL();
+        helperObj.patientLogin();
         helperObj.moduleNavigation("Fees");
         Thread.sleep(3000);
         objPFPP=new PayFeesPage(driver);
-        objPFPP.payFee();	
+        objPFPP.payFee();
+        helperObj.moduleNavigation("Logout");
 	}
 }
 	

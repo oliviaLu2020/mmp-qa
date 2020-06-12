@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
+import org.iit.mmp.config.ProjectConfiguration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,9 +19,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class HelperClass {
 	WebDriver driver ;
 	
+	
 	public HelperClass(WebDriver driver)
 	{
 		this.driver = driver;
+
 	}
 	
 	 
@@ -28,10 +32,23 @@ public class HelperClass {
 		driver.findElement(By.xpath("//span[contains(text(),'"+moduleName+"')]")).click();
 	}
 	 
-	public void launchApplicationURL(String url)
+	
+	
+	public void launchApplicationAdminURL() throws IOException
 	{
-		driver.get(url); 
+		ProjectConfiguration pConfig = new ProjectConfiguration();	
+		Properties pro = pConfig.loadProperties();
+		 driver.get(pro.getProperty("adminPortalUrl"));
+		
 	}
+	
+	public void launchApplicationPatientURL() throws IOException
+	{
+		ProjectConfiguration pConfig = new ProjectConfiguration();	
+		Properties pro = pConfig.loadProperties();
+		 driver.get(pro.getProperty("patientPortalUrl"));
+	}
+	
 	
 	public WebDriver switchToAFrameAvailable(String frameId,int timeinSecs)
 	{
@@ -40,13 +57,26 @@ public class HelperClass {
 		return driver;
 	}
 	
-	public void login(String userName,String pwd) 
+	public void adminLogin() throws IOException 
 	{
-		  driver.findElement(By.xpath("//input[@id='username']")).sendKeys(userName);
-		  driver.findElement(By.xpath("//input[@id='password']")).sendKeys(pwd);
-		  driver.findElement(By.xpath("//input[@type='submit']")).click();
+		ProjectConfiguration pConfig = new ProjectConfiguration();	
+		Properties pro = pConfig.loadProperties();  
+		driver.findElement(By.xpath("//input[@id='username']")).sendKeys(pro.getProperty("adminUser"));
+		driver.findElement(By.xpath("//input[@id='password']")).sendKeys(pro.getProperty("adminPassword"));
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
 
     }
+	
+	public void patientLogin() throws IOException 
+	{
+		ProjectConfiguration pConfig = new ProjectConfiguration();	
+		Properties pro = pConfig.loadProperties();  
+		driver.findElement(By.xpath("//input[@id='username']")).sendKeys(pro.getProperty("patientUser"));
+		driver.findElement(By.xpath("//input[@id='password']")).sendKeys(pro.getProperty("patientPassword"));
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+
+    }
+	
 	
 	public void captureScreenshot(String tc_Name) throws IOException
 	{

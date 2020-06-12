@@ -1,5 +1,8 @@
 package org.iit.mmp.adminmodule.pages;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 import org.iit.mmp.helper.HelperClass;
 import org.iit.mmp.utility.Utility;
 import org.openqa.selenium.By;
@@ -14,50 +17,43 @@ import org.openqa.selenium.support.ui.Select;
 		HelperClass helperObj;
 		
 		
-		By createVisit=By.xpath("//input[@value='Create Visit']");
-		
 		By datepicker=By.xpath("//input[@id='datepicker']");
-		By datepickerMonth=By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div");
-		By next=By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span");
-		By datepickerDate=By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[3]/td[2]/a");
 		By appoitmentTime=By.id("time");
 		By continueB=By.id("ChangeHeatName");
-		By sForm=By.xpath("//textarea[@name='sym']");
-		By sySumbit=By.xpath("//form[@name='symptoms']/descendant::div/input[@value='Submit']");
+		By sForm=By.name("sym");
+		By sySumbit=By.xpath("//input[@value='Submit']");
 		
 		
 		
 		
-		public ScheduleAppointmentAdminPage(WebDriver driver)
+		public ScheduleAppointmentAdminPage(WebDriver driver) throws IOException
 		{
 			this.driver=driver;
 			helperObj=new HelperClass(driver);
 		}
- 
-			/*//create visit-search doctor	
-			public void navigateCreateVisit()
-			{
-				driver.findElement(createVisit).click();
-			}*/
 			
 			//create visit schedule appointment
-			public void scheduleAppointment(String doctorName) throws InterruptedException
+			public HashMap<String, String> scheduleAppointment(String doctorName) throws InterruptedException
 			{
-				
+				HashMap<String,String> hMap= new HashMap<String,String>();
 				driver.findElement(By.xpath("//h4[contains(text(),'"+doctorName+"')]/ancestor::td/button[@id='opener']")).click();
 				driver = helperObj.switchToAFrameAvailable("myframe",20);
 				String dateOfAppointment = Utility.getFutureDate(10);
-				driver.findElement(By.id("datepicker")).sendKeys(dateOfAppointment);
+				driver.findElement(datepicker).sendKeys(dateOfAppointment);
 				String time = "10Am";
-				new Select(driver.findElement(By.id("time"))).selectByVisibleText(time);
+				new Select(driver.findElement(appoitmentTime)).selectByVisibleText(time);
 				Thread.sleep(2000);
-				driver.findElement(By.id("ChangeHeatName")).click();
+				driver.findElement(continueB).click();
 				
 				String symptoms= "Booking an Appointment "+doctorName +"on date::"+dateOfAppointment+ "for symptom fever";
 				Thread.sleep(2000);
-				driver.findElement(By.name("sym")).clear();
-				driver.findElement(By.name("sym")).sendKeys(symptoms);
-				driver.findElement(By.xpath("//input[@value='Submit']")).click();
+				driver.findElement(sForm).clear();
+				driver.findElement(sForm).sendKeys(symptoms);
+				driver.findElement(sySumbit).click();
+				
+				hMap.put("dateOfAppointment", dateOfAppointment);
+				System.out.println(dateOfAppointment);
+				return hMap;
 			}
 			
 	}
