@@ -47,7 +47,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>6.14.3</version> <!-- -removed scope as per Sudheer's suggestion-->		
+			<version>7.5.1</version> <!-- -removed scope as per Sudheer's suggestion-->		
 		</dependency>
   
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
